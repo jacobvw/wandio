@@ -167,7 +167,7 @@ AS_IF([test "x$have_zlib" = "xyes"], [
 )
 
 AC_ARG_WITH([lzo],
-	AC_HELP_STRING([--with-lzo], [build with support for writing lzo compressed files]))
+	AC_HELP_STRING([--with-lzo], [build with support for lzo compressed files]))
 
 AS_IF([test "x$with_lzo" != "xno"],
 	[
@@ -346,7 +346,7 @@ echo
 AC_MSG_NOTICE([WANDIO version $PACKAGE_VERSION])
 reportopt "Compiled with compressed file (zlib) support" $with_zlib
 reportopt "Compiled with compressed file (bz2) support" $with_bzip2
-reportopt "Compiled with compressed file (lzo write only) support" $with_lzo
+reportopt "Compiled with compressed file (lzo) support" $with_lzo
 reportopt "Compiled with compressed file (lzma) support" $with_lzma
 reportopt "Compiled with compressed file (zstd) support" $with_zstd
 reportopt "Compiled with compressed file (lz4) support" $with_lz4

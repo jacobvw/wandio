@@ -18,7 +18,7 @@ LIBTRACEIO_BZLIB=
 endif
 
 if HAVE_LZO
-LIBTRACEIO_LZO=iow-lzo.c
+LIBTRACEIO_LZO=ior-lzo.c iow-lzo.c
 else
 LIBTRACEIO_LZO=
 endif

@@ -271,6 +271,25 @@ static io_t *create_io_reader(const char *filename, int autodetect) {
                         return NULL;
 #endif
                 }
+
+		// Check for LZO magic number
+		if ((len >= 9) && (buffer[0] == 0x89) && (buffer[1] == 0x4c) &&
+			(buffer[2] == 0x5a) && (buffer[3] == 0x4f) &&
+			(buffer[4] == 0x00) && (buffer[5] == 0x0d) &&
+			(buffer[6] == 0x0a) && (buffer[7] == 0x1a) &&
+			(buffer[8] == 0x0a)) {
+
+#if HAVE_LIBLZO2
+			DEBUG_PIPELINE("lzo");
+			io = lzo_open(io);
+#else
+			fprintf(stderr,
+				"File %s is lzo compressed but libwandio "
+				"has not been built with lzo support!\n",
+				filename);
+			return NULL;
+#endif
+		}
         }
         /* Now open a threaded, peekable reader using the appropriate module
          * to read the data */
